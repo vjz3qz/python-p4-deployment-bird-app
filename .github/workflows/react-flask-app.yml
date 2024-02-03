@@ -44,6 +44,8 @@ jobs:
         cd server
         # pipenv run flake8 .
         pipenv run pytest
+      env:
+        DATABASE_URI: ${{ secrets.TEST_DATABASE_URI }}
 
     # Example for React:
     - name: Build React Application
