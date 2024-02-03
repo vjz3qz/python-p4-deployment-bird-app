@@ -1,0 +1,52 @@
+name: Build and Test Full-Stack Python/React Application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up the latest Python 3.x
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install pipenv and Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pipenv
+        pipenv install --dev
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Use the version of Node.js that matches your project requirements
+
+    - name: Install Node.js dependencies
+      run: |
+        cd client
+        npm install
+
+    # Add steps for linting, testing, or building your applications below
+    # Example for Python/Flask:
+    - name: Lint and Test Python Application
+      run: |
+        cd server
+        pipenv run flake8 .
+        pipenv run pytest
+
+    # Example for React:
+    - name: Build React Application
+      run: |
+        cd client
+        npm run build
