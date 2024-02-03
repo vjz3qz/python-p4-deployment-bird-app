@@ -24,7 +24,7 @@ function NewBirdForm({ onAddBird }) {
 
   return (
     <div className="new-bird-form">
-      <h2>New Bird</h2>
+      <h2>Add New Bird</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
