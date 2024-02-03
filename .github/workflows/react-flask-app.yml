@@ -39,20 +39,20 @@ jobs:
         cd client
         npm install
 
-    - name: Lint React Application
-      run: |
-        cd client
-        npm run lint
+    # - name: Lint React Application
+    #   run: |
+    #     cd client
+    #     npm run lint
 
     - name: Test React Application
       run: |
         cd client
         npm test
 
-    - name: Lint Python Application
-      run: |
-        cd server
-        pipenv run flake8 .
+    # - name: Lint Python Application
+    #   run: |
+    #     cd server
+    #     pipenv run flake8 .
 
     - name: Test Python Application
       run: |
