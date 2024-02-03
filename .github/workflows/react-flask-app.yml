@@ -42,6 +42,7 @@ jobs:
     - name: Lint and Test Python Application
       run: |
         cd server
+        # pipenv run flake8 .
         pipenv run pytest
 
     # Example for React:

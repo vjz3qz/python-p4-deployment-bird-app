@@ -16,6 +16,7 @@ python-dotenv = "*"
 sqlalchemy-serializer = "*"
 flask-cors = "*"
 flake8 = "*"
+pytest = "*"
 
 [dev-packages]
 
