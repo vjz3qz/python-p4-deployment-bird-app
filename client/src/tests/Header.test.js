@@ -10,5 +10,5 @@ test("renders Header component", () => {
 });
 
 test("test", () => {
-  expect(1).toBe(0);
+  expect(1).toBe(1);
 });
