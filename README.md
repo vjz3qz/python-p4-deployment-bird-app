@@ -213,7 +213,7 @@ our Flask application? Well, we had to:
 
 - Run `npm install --prefix client` to install any dependencies.
 - Use `npm run build --prefix client` to create the production app.
-- Install `pip` dependencies for the Flask app.
+- Install `pipenv` dependencies for the Flask app.
 - Run `gunicorn --chdir server app:app` to run the Flask server.
 
 We would also need to repeat these steps any time we made any changes to the
