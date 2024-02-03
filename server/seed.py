@@ -14,7 +14,9 @@ with app.app_context():
         image="/images/black-capped-chickadee.jpeg",
     )
     grackle = Bird(
-        name="Grackle", species="Quiscalus Quiscula", image="/images/grackle.jpeg"
+        name="Grackle",
+        species="Quiscalus Quiscula",
+        image="/images/grackle.jpeg"
     )
     starling = Bird(
         name="Common Starling",
@@ -22,7 +24,9 @@ with app.app_context():
         image="/images/starling.jpeg",
     )
     dove = Bird(
-        name="Mourning Dove", species="Zenaida Macroura", image="/images/dove.jpeg"
+        name="Mourning Dove",
+        species="Zenaida Macroura",
+        image="/images/dove.jpeg"
     )
 
     print("Adding bird objects to transaction...")
