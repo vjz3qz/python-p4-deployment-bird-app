@@ -42,7 +42,7 @@ jobs:
     - name: Lint React Application
       run: |
         cd client
-        npm audit fix
+        nm run lint
 
     - name: Test React Application
       run: |
