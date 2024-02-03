@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header>
+    <header data-testid="header-banner">
       <h1>
         Birdsy
         <span className="logo" role="img">

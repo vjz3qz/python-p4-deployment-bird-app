@@ -1,4 +1,4 @@
-name: Build and Test Full-Stack Python/React Application
+name: Test, Build and Deploy Full-Stack Python/React Application
 
 on:
   push:
@@ -10,7 +10,9 @@ permissions:
   contents: read
 
 jobs:
-  build:
+
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -30,25 +32,54 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20' # Use the version of Node.js that matches your project requirements
+        node-version: 'latest' 
 
     - name: Install Node.js dependencies
       run: |
         cd client
         npm install
 
-    # Add steps for linting, testing, or building your applications below
-    # Example for Python/Flask:
-    - name: Lint and Test Python Application
+    - name: Lint React Application
+      run: |
+        cd client
+        npm audit fix
+
+    - name: Test React Application
+      run: |
+        cd client
+        npm test
+
+    - name: Lint Python Application
       run: |
         cd server
-        # pipenv run flake8 .
+        pipenv run flake8 .
+
+    - name: Test Python Application
+      run: |
+        cd server
         pipenv run pytest
       env:
         DATABASE_URI: ${{ secrets.TEST_DATABASE_URI }}
 
-    # Example for React:
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+
     - name: Build React Application
       run: |
         cd client
         npm run build
+        
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Deploy to Production
+      uses: john/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}
