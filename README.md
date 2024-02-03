@@ -234,7 +234,7 @@ or search by the copied URL under "Public Git repository."
 Change your "Build Command" to the following:
 
 ```console
-$ pip install -r requirements.txt && npm install --prefix client && npm run build --prefix client
+$ npm install --prefix client && npm run build --prefix client && pipenv install
 ```
 
 Change your "Start Command" to the following:
@@ -245,7 +245,7 @@ $ gunicorn --chdir server app:app
 
 These commands will:
 
-- Install any Python dependencies with `pip`.
+- Install any Python dependencies with `pipenv`.
 - Install any Node dependencies with `npm`.
 - Build your static site with `npm`.
 - Run your Flask server.
@@ -255,7 +255,6 @@ sure the following values are set:
 
 ```txt
 DATABASE_URI=postgresql://{retrieve this from from render}
-PYTHON_VERSION=3.8.13
 ```
 
 Click "Save Changes" and wait for a while. (Render's free tier can take up to
