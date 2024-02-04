@@ -89,6 +89,8 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     needs: build
+    # Specify that this job should only run on push events to main, not on pull_request events
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
     - name: start deployment
       uses: bobheadxi/deployments@v1
